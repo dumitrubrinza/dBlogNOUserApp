@@ -181,12 +181,12 @@ blogApp.controller('NewArtController', ['$scope', '$rootScope', '$location','Art
                     });
 
               $scope.addArticle = function(){
-             //  var currentUser = user.current;
+                var currentUser = "String";
                 var article = { 
                               title: $scope.newPost.title,
                               data: $scope.htmlVariable,  
                               createdAt: new Date(),
-                              by: null
+                              by: currentUser
                               }
 
                ArticleService.addArticle(article)
