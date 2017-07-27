@@ -1,0 +1,100 @@
+<div>
+	
+	<div class="row">
+		<p><h3>{{article.title}}</h3></p>
+	</div>
+	<div class="row">
+     <blockquote>
+    <div ta-bind ng-model="article.data"></div>
+		 </blockquote>
+	</div>
+
+	<div class = "row">
+		<small>by <cite>{{article.by}}</cite></small> <p class="pull-right">{{article.createdAt | date:"MM/dd/yyyy 'at' h:mma"}} </p>
+	</div>
+	
+
+
+    <div class="row">
+        <h4>Comments:</h4>
+    </div>
+    <div ng-repeat="comment in article.comments" class="space">
+    	<div class="row">
+
+    		<div class="col-xs-2">
+
+
+                <div class="bubble clearfix">
+                   <img src="/images/no-image-icon-md.png" alt="image">
+               </div>
+
+           </div>
+
+           <div class="col-xs-10">
+               <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">  
+                      <div class="col-xs-2">
+                        <div class="comment-name">
+                            <b> {{comment.author}}</b>
+                        </div>
+                      </div> 
+                      <div class="col-xs-10" ng-mouseover="changeImage=true" ng-mouseleave="changeImage=false" ng-init="changeImage=false"> 
+                        <div class="comment-date">
+                            {{comment.createdAt | date:"MM/dd/yyyy 'at' h:mma"}}
+                        </div> 
+                        <div class="comment-rating">
+                          <span class="like">
+                            <span ng-hide="changeImage">
+                              <span>
+                               {{comment.upvotes}}
+                             </span>                             
+                           </span>
+                           <span ng-show="changeImage">
+                            <span>
+                              <i class="fa fa-thumbs-o-up" ng-click="incrementUpvotes(comment)"></i>
+                            </span>
+                          </span>
+                        </span>
+                        <span class="dislike">
+                           <span ng-hide="changeImage">
+                              <span>
+                               {{comment.downvotes}}
+                             </span>                             
+                           </span>
+                           <span ng-show="changeImage">
+                            <span>
+                              <i class="fa fa-thumbs-o-down" ng-click="derementDownvotes(comment)"></i>
+                            </span>
+                          </span>
+                        </span>
+                         
+                      </div>
+                      </div>
+                    </div>
+                   <div class="bubble-content">
+                       <div class="point"></div>
+                       
+                       <p>{{comment.body}}</p>
+                   </div>
+               </div>
+
+
+
+           </div>
+
+       </div>
+ </div>	
+</div>
+<form name="postForm"  ng-submit="addComment()"
+            style="margin-top:30px;">
+            <h4>Add a comment</h4>
+
+            <div class="form-group">
+                <textarea class="form-control" rows="5" required placeholder="Comment"
+                ng-model="comment.body">
+            </textarea>           
+        </div>
+        <button type="submit" class="btn btn-primary"> Post</button>
+    </form>
+</div>
