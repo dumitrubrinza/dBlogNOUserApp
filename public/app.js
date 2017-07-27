@@ -143,9 +143,9 @@ var compareTo = function() {
             if($scope.comment.body === '') { return; }
             var comment = {
                 body: $scope.comment.body,
-                author: null,
+                author: "Anonimous",
                 createdAt: new Date(),
-                picture: null
+                picture: "null"
             }
             ArticleService.addArticleComment($scope.article._id, comment )
                 .success(function(added_comment) {
