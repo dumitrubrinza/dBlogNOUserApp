@@ -186,7 +186,7 @@ blogApp.controller('NewArtController', ['$scope', '$rootScope', '$location','Art
                               title: $scope.newPost.title,
                               data: $scope.htmlVariable,  
                               createdAt: new Date(),
-                              //by: currentUser.first_name
+                              by: null
                               }
 
                ArticleService.addArticle(article)
